@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public abstract class HashAlgorithmEntry:
         NotifyPropertyChanged

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public abstract class CommandBase :
         ICommand

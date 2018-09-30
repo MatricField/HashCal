@@ -4,7 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public class CustomHashAlgorithmEntry :
         HashAlgorithmEntry

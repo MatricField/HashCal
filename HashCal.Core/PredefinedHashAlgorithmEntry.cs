@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public class PredefinedHashAlgorithmEntry:
         HashAlgorithmEntry

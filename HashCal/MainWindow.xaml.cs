@@ -31,7 +31,7 @@ namespace HashCal
         {
             if(e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                InputType.SelectedItem = Algorithms.InputMode.File;
+                InputType.SelectedItem = Core.InputMode.File;
                 var files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 InputBox.Text = files[0];
             }

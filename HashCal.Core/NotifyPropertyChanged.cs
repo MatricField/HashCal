@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public abstract class NotifyPropertyChanged :
         INotifyPropertyChanged

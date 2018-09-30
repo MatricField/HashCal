@@ -103,9 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HashCal.Algorithms\HashCal.Algorithms.csproj">
-      <Project>{0c16138b-5536-4605-a718-bfcf16534d6b}</Project>
-      <Name>HashCal.Algorithms</Name>
+    <ProjectReference Include="..\HashCal.Core\HashCal.Core.csproj">
+      <Project>{fdacf262-3a65-4aeb-a74d-4b66110fa2df}</Project>
+      <Name>HashCal.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

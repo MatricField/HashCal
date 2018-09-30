@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HashCal"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
-        xmlns:Algorithms="clr-namespace:HashCal.Algorithms;assembly=HashCal.Algorithms"
+        xmlns:Core="clr-namespace:HashCal.Core;assembly=HashCal.Core"
         x:Name="window" x:Class="HashCal.MainWindow"
         mc:Ignorable="d"
         Title="HashCal" Height="350" Width="525" AllowDrop="True" Drop="File_Drop" Closing="Window_Closing">
@@ -24,7 +24,7 @@
             <ComboBox x:Name="InputType" 
                       Grid.Column="0" 
                       DockPanel.Dock="Left"
-                      ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type Algorithms:InputMode}}}"
+                      ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type Core:InputMode}}}"
                       SelectedItem="{Binding InputMode, Mode=TwoWay}"
                       SelectedIndex="0"/>
             <TextBox x:Name="InputBox" 

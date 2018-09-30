@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public class ViewModel:
         NotifyPropertyChanged

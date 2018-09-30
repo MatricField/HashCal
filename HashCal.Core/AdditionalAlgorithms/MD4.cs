@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace HashCal.Algorithms.AdditionalHashAlgorithms
+namespace HashCal.Core.AdditionalAlgorithms
 {
     public class MD4 : HashAlgorithm
     {

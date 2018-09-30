@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HashCal.Algorithms
+namespace HashCal.Core
 {
     public enum InputMode
     {

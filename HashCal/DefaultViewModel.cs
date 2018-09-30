@@ -1,5 +1,5 @@
-﻿using HashCal.Algorithms;
-using HashCal.Algorithms.AdditionalHashAlgorithms;
+﻿using HashCal.Core;
+using HashCal.Core.AdditionalAlgorithms;
 using System.Security.Cryptography;
 
 namespace HashCal
