@@ -4,38 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HashCal"
-        xmlns:System="clr-namespace:System;assembly=mscorlib"
-        xmlns:Algorithms="clr-namespace:HashCal.Algorithms;assembly=HashCal.Algorithms"
-        x:Name="window" x:Class="HashCal.MainWindow"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="window" x:Class="HashCal.MainWindow"
         mc:Ignorable="d"
         Title="HashCal" Height="350" Width="525" AllowDrop="True" Drop="File_Drop" Closing="Window_Closing">
-    <Window.DataContext>
-        <local:DefaultViewModel/>
-    </Window.DataContext>
-    <Window.Resources>
-        <local:ByteArrayToStringConvertor x:Key="ByteArrayToStringConvertor"/>
-    </Window.Resources>
     <StackPanel Orientation="Vertical" Grid.IsSharedSizeScope="True">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" SharedSizeGroup="LeftSharedSizeGroup"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="InputType" 
-                      Grid.Column="0" 
-                      DockPanel.Dock="Left"
-                      ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type Algorithms:InputMode}}}"
-                      SelectedItem="{Binding InputMode, Mode=TwoWay}"
-                      SelectedIndex="0"/>
-            <TextBox x:Name="InputBox" 
-                     Grid.Column="1"
-                     Text="{Binding HashTarget, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
+            <ComboBox Name="InputType" Grid.Column="0" DockPanel.Dock="Left">
+                <ComboBoxItem>File</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">String</ComboBoxItem>
+            </ComboBox>
+            <TextBox Name="InputBox" Grid.Column="1" Text=""></TextBox>
         </Grid>
 
         <Separator/>
 
-        <ItemsControl HorizontalAlignment="Stretch" BorderBrush="Transparent" ItemsSource="{Binding Algorithms}">
+        <ItemsControl HorizontalAlignment="Stretch" BorderBrush="Transparent" ItemsSource="{Binding Calculator, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -44,10 +31,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <CheckBox IsChecked="{Binding IsEnabled}"/>
-                            <TextBlock Text="{Binding AlgorithmName}"/>
+                            <CheckBox IsEnabled="{Binding NotBusy, ElementName=window}" IsChecked="{Binding Value.IsEnabled}"/>
+                            <TextBlock Text="{Binding Key}"/>
                         </StackPanel>
-                        <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding HashValue, Converter={StaticResource ByteArrayToStringConvertor}, Mode=OneWay}"/>
+                        <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Value.HashResult, Mode=TwoWay}"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -58,12 +45,9 @@
 
         <DockPanel LastChildFill="False">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                <Button x:Name="ComputeButton"
-                        Command="{Binding ComputeAllCommand}"
-                        CommandParameter="{Binding Text, ElementName=InputBox}"
-                        Content="Compute All"/>
-                <Button IsEnabled="False" Content="Cancel"/>
-                <Button Click="Close_Click" Content="Close"/>
+                <Button Name="ComputeButton" Click="ComputeClick">Compute</Button>
+                <Button Name="CancelButton" IsEnabled="False" Click="Cancel_Click">Cancel</Button>
+                <Button Click="Close_Click">Close</Button>
             </StackPanel>
         </DockPanel>
     </StackPanel>

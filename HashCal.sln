@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCal", "HashCal\HashCal.csproj", "{7543FBD3-B258-4513-9ABF-9B566EFBDE30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCal.Algorithms", "HashCal.Algorithms\HashCal.Algorithms.csproj", "{0C16138B-5536-4605-A718-BFCF16534D6B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{7543FBD3-B258-4513-9ABF-9B566EFBDE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7543FBD3-B258-4513-9ABF-9B566EFBDE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7543FBD3-B258-4513-9ABF-9B566EFBDE30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C16138B-5536-4605-A718-BFCF16534D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C16138B-5536-4605-A718-BFCF16534D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C16138B-5536-4605-A718-BFCF16534D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C16138B-5536-4605-A718-BFCF16534D6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
