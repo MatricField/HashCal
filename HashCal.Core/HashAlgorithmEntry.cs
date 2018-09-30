@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace HashCal.Core
@@ -32,69 +34,26 @@ namespace HashCal.Core
             }
         }
 
-        private ICommand _ComputeHash;
-
-        public virtual ICommand ComputeHashCommand
-        {
-            get => _ComputeHash ?? throw new ArgumentNullException();
-            set
-            {
-                _ComputeHash = value;
-                OnPropertyChanged();
-            }
-        }
-
         public abstract string AlgorithmName { get; }
 
         public HashAlgorithmEntry()
         {
             HashValue = Array.Empty<byte>();
             IsEnabled = true;
-            ComputeHashCommand = new ComputeHashCommandImpl(this);
         }
 
         public abstract byte[] ComputeHash(byte[] buffer);
 
+        public Task<byte[]> ComputeHashAsync(byte[] buffer, CancellationToken token)
+        {
+            return Task.Run(() => ComputeHash(buffer), token);
+        }
+
         public abstract byte[] ComputeHash(Stream buffer);
 
-        protected class ComputeHashCommandImpl :
-            CommandBase
+        public Task<byte[]> ComputeHashAsync(Stream buffer, CancellationToken token)
         {
-            protected HashAlgorithmEntry AssociatedEntry;
-
-            public ComputeHashCommandImpl(HashAlgorithmEntry associatedEntry)
-            {
-                AssociatedEntry = associatedEntry ?? throw new ArgumentNullException();
-                associatedEntry.PropertyChanged += (_, e) =>
-                {
-                    if (e.PropertyName == nameof(HashAlgorithmEntry.IsEnabled))
-                    {
-                        OnCanExecuteChanged();
-                    }
-                };
-            }
-
-            public override bool CanExecute(object parameter)
-            {
-                return AssociatedEntry.IsEnabled &&
-                    (parameter is byte[] ||
-                    parameter is Stream);
-            }
-
-            public override void Execute(object parameter)
-            {
-                switch (parameter)
-                {
-                    case byte[] array:
-                        AssociatedEntry.ComputeHash(array);
-                        break;
-                    case Stream stream:
-                        AssociatedEntry.ComputeHash(stream);
-                        break;
-                    default:
-                        throw new ArgumentException();
-                }
-            }
+            return Task.Run(() => ComputeHash(buffer), token);
         }
     }
 }

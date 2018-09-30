@@ -9,12 +9,6 @@
         x:Name="window" x:Class="HashCal.MainWindow"
         mc:Ignorable="d"
         Title="HashCal" Height="350" Width="525" AllowDrop="True" Drop="File_Drop" Closing="Window_Closing">
-    <Window.DataContext>
-        <local:DefaultViewModel/>
-    </Window.DataContext>
-    <Window.Resources>
-        <local:ByteArrayToStringConvertor x:Key="ByteArrayToStringConvertor"/>
-    </Window.Resources>
     <StackPanel Orientation="Vertical" Grid.IsSharedSizeScope="True">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -24,8 +18,6 @@
             <ComboBox x:Name="InputType" 
                       Grid.Column="0" 
                       DockPanel.Dock="Left"
-                      ItemsSource="{Binding Source={local:EnumBindingSource EnumType={x:Type Core:InputMode}}}"
-                      SelectedItem="{Binding InputMode, Mode=TwoWay}"
                       SelectedIndex="0"/>
             <TextBox x:Name="InputBox" 
                      Grid.Column="1"
@@ -47,7 +39,7 @@
                             <CheckBox IsChecked="{Binding IsEnabled}"/>
                             <TextBlock Text="{Binding AlgorithmName}"/>
                         </StackPanel>
-                        <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding HashValue, Converter={StaticResource ByteArrayToStringConvertor}, Mode=OneWay}"/>
+                        <TextBox Grid.Column="1" IsReadOnly="True"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

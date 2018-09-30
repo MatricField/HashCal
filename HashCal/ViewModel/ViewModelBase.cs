@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HashCal.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -6,9 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
 
-namespace HashCal.Core
+namespace HashCal.ViewModel
 {
-    public class ViewModel:
+    public class ViewModelBase:
         NotifyPropertyChanged
     {
         public ObservableCollection<HashAlgorithmEntry> Algorithms { get; }
@@ -62,7 +63,7 @@ namespace HashCal.Core
             }
         }
 
-        public ViewModel()
+        public ViewModelBase()
         {
             Algorithms = new ObservableCollection<HashAlgorithmEntry>();
             HashTarget = "";
@@ -81,11 +82,11 @@ namespace HashCal.Core
         }
 
         protected class ComputeAllCommandImpl :
-            CommandBase
+            AsyncCommandBase
         {
-            private ViewModel AssociatedViewModel;
+            private ViewModelBase AssociatedViewModel;
 
-            public ComputeAllCommandImpl(ViewModel viewModel)
+            public ComputeAllCommandImpl(ViewModelBase viewModel)
             {
                 AssociatedViewModel = viewModel ?? throw new ArgumentNullException();
                 AssociatedViewModel.PropertyChanged += AssociatedViewModel_PropertyChanged;

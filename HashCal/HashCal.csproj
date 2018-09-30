@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\IGenericCommand.cs" />
+    <Compile Include="Command\AsyncGenericCommandBase.cs" />
+    <Compile Include="ViewModel\InputMode.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,7 +73,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ByteArrayToStringConvertor.cs" />
-    <Compile Include="DefaultViewModel.cs" />
     <Compile Include="EnumBindingSourceExtension.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
